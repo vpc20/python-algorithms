@@ -6,8 +6,8 @@ def is_magic_square(arr):
     n = len(arr)
     magic_sum = n * (n ** 2 + 1) // 2
 
-    sum_diag1 = 0
-    sum_diag2 = 0
+    sum_diag1 = 0  # diagonals ↘
+    sum_diag2 = 0  # diagonals ↙
     for i in range(n):
         sum_row = 0
         sum_col = 0
@@ -20,10 +20,7 @@ def is_magic_square(arr):
         sum_diag1 += arr[i][i]
         sum_diag2 += arr[i][n - 1 - i]
 
-    if sum_diag1 != magic_sum or sum_diag2 != magic_sum:  # check diagonals ↘ and ↙
-        return False
-
-    return True
+    return sum_diag1 == magic_sum and sum_diag2 == magic_sum  # check diagonals ↘ and ↙
 
 
 def is_magic_square1(arr):
@@ -55,8 +52,9 @@ def is_magic_square2(arr):
 def magic_square(n):
     arr = [num for num in range(1, n ** 2 + 1)]
     for perm in permutations(arr):
-        square_arr = [perm[i:i + n] for i in range(0, len(perm), n)]
-        print(square_arr)
+        # square_arr = [perm[i:i + n] for i in range(0, len(perm), n)]
+        square_arr = [perm[i * n:i * n + n] for i in range(n)]
+        # print(square_arr)
         if is_magic_square(square_arr):
             # assert is_magic_square(square_arr) == is_magic_square1(square_arr)
             # assert is_magic_square(square_arr) == is_magic_square2(square_arr)
@@ -83,5 +81,5 @@ if __name__ == '__main__':
     #        [4, 9, 2]]
     # print(is_magic_square(arr))
 
-    # print(magic_square(3))
-    print(magic_square(4))
+    print(magic_square(3))
+    # print(magic_square(4))
