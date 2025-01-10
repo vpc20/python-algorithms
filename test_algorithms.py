@@ -1,7 +1,8 @@
-from unittest import TestCase
-from SumInArray import sum_in_array
-from Sorting.MergeSortIterative import merge_sort
 from random import randrange, choices
+from unittest import TestCase
+
+from Sorting.MergeSortIterative import merge_sort
+from SumInArray import sum_in_array
 from random_data import random_int_array
 
 
